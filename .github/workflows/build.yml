@@ -167,9 +167,9 @@ jobs:
           IMAGE_FULL="${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}"
           images=""
           for tag in ${{ steps.metadata.outputs.tags }}; do
-            images+="$IMAGE_FULL:$tag "
+            images+="$IMAGE_FULL:$tag@${DIGEST} "
           done
           cosign sign --yes ${images}
         env:
-          TAGS: ${{ steps.push.outputs.digest }}
+          DIGEST: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
