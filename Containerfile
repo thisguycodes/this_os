@@ -36,6 +36,10 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/build.sh
 
 ADD https://repos.fyralabs.com/terra44-mesa/key.asc /etc/pki/rpm-gpg/RPM-GPG-KEY-terra44-mesa
+# Download key and import it into the RPM database directly
+RUN curl -L https://repos.fyralabs.com/terra44-mesa/key.asc -o /tmp/key.asc && \
+    rpm --import /tmp/key.asc && \
+    rm /tmp/key.asc
 
 ### LINTING
 ## Verify final image and contents are correct.
