@@ -9,3 +9,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      all:
+        patterns: ["*"]
+    cooldown:
+      default-days: 5
+      include: ["*"]
