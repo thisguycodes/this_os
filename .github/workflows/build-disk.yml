@@ -35,7 +35,10 @@ jobs:
       fail-fast: false
       matrix:
         disk-type: ["qcow2", "anaconda-iso"]
-        platform: ["amd64", "arm64"]
+        platform:
+          - "amd64"
+          # not building the arm image yet
+          # - "arm64"
     permissions:
       contents: read
       packages: read
